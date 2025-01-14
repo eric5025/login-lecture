@@ -1,4 +1,15 @@
 "use strict"
 
-console.log("hello world");
-console.log("bye");
+const id = document.querySelector("#id"), //#은 id의 id를 의미
+password = document.querySelector("#password"),
+loginButton = document.querySelector("button");
+
+loginButton.addEventListener("click", login);
+function login(){
+   const req = {
+    id: id.value,
+    password: password.value
+   };
+
+   console.log(req);
+}
