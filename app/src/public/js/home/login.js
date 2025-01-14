@@ -11,5 +11,11 @@ function login(){
     password: password.value
    };
 
-   console.log(req);
+   fetch("/login", {
+    method: "POST",
+    headers: {
+        "content-Type": "application/json", //json으로 보냄 
+    },
+    body: JSON.stringify(req),
+   });
 }
