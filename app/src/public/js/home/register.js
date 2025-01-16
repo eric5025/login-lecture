@@ -1,17 +1,21 @@
 "use strict"
 
 const id = document.querySelector("#id"), //#은 id의 id를 의미
+name = document.querySelector("#name"),
 password = document.querySelector("#password"),
-loginButton = document.querySelector("#button");
+confirmPassword = document.querySelector("#confirm-password"),
+registerButton = document.querySelector("#button");
 
-loginButton.addEventListener("click", login);
-function login(){
+registerButton.addEventListener("click", register);
+function register(){
    const req = {
     id: id.value,
-    password: password.value
+    name: name.value,
+    password: password.value,
+    confirmPassword: confirmPassword.value,
    };
 
-   fetch("/login", {
+   fetch("/register", {
     method: "POST",
     headers: {
         "content-Type": "application/json", //json으로 보냄 
@@ -21,11 +25,11 @@ function login(){
     .then((res) => res.json())
     .then((res) => {
         if (res.success){
-            location.href = "/";
+            location.href = "/login";
         }else{
             alert(res.msg);
     }
     }).catch((err) => {
-        console.error(new Error("로그인 중 에러 발생"));
+        console.error(new Error("회원가입 중 에러 발생"));
     });
 }
